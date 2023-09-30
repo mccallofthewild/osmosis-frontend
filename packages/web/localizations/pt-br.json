@@ -39,7 +39,9 @@
     "outOfRangeWarning": "O preço de mercado está fora da faixa de preço especificada. Apenas depósito de ativo único.",
     "high": "alto",
     "low": "baixo",
-    "buttonCreateAndStake": "Criar posição e participação"
+    "buttonCreateAndStake": "Criar posição e participação",
+    "estimated": "Estimado",
+    "estimatedInfo": "Esta é uma estimativa baseada nos preços atuais selecionados. A TAEG real pode variar. Se a posição sair do intervalo, a TAEG será de 0%."
   },
   "addConcentratedLiquidityIntro": {
     "learnMoreTitle": "O que é Liquidez Supercarregada?",
@@ -392,7 +394,8 @@
     "signupPageButton": "Ativar notificações",
     "loadMore": "Carregue mais",
     "unsavedChangeModalInfo": "Você tem alterações não salvas. Você gostaria de",
-    "discardButton": "Descartar mudanças"
+    "discardButton": "Descartar mudanças",
+    "clearAllHistory": "Limpar tudo"
   },
   "pool": {
     "24hrTradingVolume": "Volume de negociação em 24h",

@@ -39,7 +39,9 @@
     "outOfRangeWarning": "Piyasa fiyatı, belirttiğiniz fiyat aralığının dışında. Yalnızca tek varlık depozitosu.",
     "high": "yüksek",
     "low": "Düşük",
-    "buttonCreateAndStake": "Pozisyon ve Bahis Oluşturun"
+    "buttonCreateAndStake": "Pozisyon ve Bahis Oluşturun",
+    "estimated": "Tahmini",
+    "estimatedInfo": "Bu, mevcut seçilmiş fiyatlara dayalı bir tahmindir. Gerçek APR değişebilir. Konum aralığın dışına çıkarsa APR %0 olacaktır."
   },
   "addConcentratedLiquidityIntro": {
     "learnMoreTitle": "Supercharged Likidite Nedir?",
@@ -392,7 +394,8 @@
     "signupPageButton": "Bildirimleri Etkinleştir",
     "loadMore": "Daha fazla yükle",
     "unsavedChangeModalInfo": "Kaydedilmemiş değişiklikleriniz mevcut. Arzu eder misiniz",
-    "discardButton": "Değişiklikleri gözardı et"
+    "discardButton": "Değişiklikleri gözardı et",
+    "clearAllHistory": "Hepsini temizle"
   },
   "pool": {
     "24hrTradingVolume": "24s İşlem hacmi",
