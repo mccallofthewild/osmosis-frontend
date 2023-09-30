@@ -1,5 +1,6 @@
 import {
   BasePool,
+  BondingPool,
   ConcentratedLiquidityPool,
   ConcentratedLiquidityPoolRaw,
   CosmwasmPoolRaw,
@@ -52,5 +53,8 @@ export function decodePool({
     );
   } else if (type === "transmuter") {
     return new TransmuterPool(poolRaw as CosmwasmPoolRaw);
+  } else if (type == "bonding") {
+    // TODO: replace with bonding pool
+    return new BondingPool(poolRaw as CosmwasmPoolRaw);
   }
 }

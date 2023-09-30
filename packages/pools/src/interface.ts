@@ -2,7 +2,7 @@ import { Dec, Int } from "@keplr-wallet/unit";
 
 /** Interface for base pool data and basic operations on that data. */
 export interface BasePool {
-  get type(): "weighted" | "stable" | "concentrated" | "transmuter";
+  get type(): "weighted" | "stable" | "concentrated" | "transmuter" | "bonding";
 
   get id(): string;
 

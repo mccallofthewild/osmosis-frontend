@@ -1,0 +1,16 @@
+{
+  "name": "bonding-pool-bindings",
+  "version": "0.1.0",
+  "files": [
+    "bonding_pool_bindings_bg.wasm",
+    "bonding_pool_bindings.js",
+    "bonding_pool_bindings_bg.js",
+    "bonding_pool_bindings.d.ts"
+  ],
+  "module": "bonding_pool_bindings.js",
+  "types": "bonding_pool_bindings.d.ts",
+  "sideEffects": [
+    "./bonding_pool_bindings.js",
+    "./snippets/*"
+  ]
+}

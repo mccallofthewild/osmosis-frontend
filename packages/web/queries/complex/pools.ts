@@ -1,5 +1,5 @@
-import { CoinPrimitive } from "@osmosis-labs/keplr-stores";
 import { Dec, DecUtils } from "@keplr-wallet/unit";
+import { CoinPrimitive } from "@osmosis-labs/keplr-stores";
 import {
   ConcentratedLiquidityPoolRaw,
   CosmwasmPoolRaw,
@@ -9,7 +9,10 @@ import {
 import { CacheEntry, cachified } from "cachified";
 import { LRUCache } from "lru-cache";
 
-import { queryBalances } from "../cosmos";
+import { ChainInfos } from "~/config/generate-chain-infos/source-chain-infos";
+import { queryNode } from "~/queries/utils";
+
+import { queryBalances, QueryBalancesResponse } from "../cosmos";
 import {
   FilteredPoolsResponse,
   PoolToken,
@@ -303,6 +306,27 @@ async function getCosmwasmPools(): Promise<CosmwasmPoolRaw[]> {
   });
 }
 
+/* 
+  TODO: Move to own file/folder under queries.
+
+  A cosmwasm pool's x/bank balance is not always directly indicative of its liquidity. 
+  i.e. a pool that dynamically mints new tokens for a swap.
+*/
+async function queryCwPoolBalances(
+  bech32Address: string
+): Promise<QueryBalancesResponse> {
+  const query = { get_total_pool_liquidity: {} };
+  const res = await queryNode(
+    ChainInfos[0].rest,
+    `cosmwasm/wasm/v1/contract/${bech32Address}/smart/${btoa(
+      JSON.stringify(query)
+    )}`
+  );
+  return {
+    balances: res["total_pool_liquidity"],
+  };
+}
+
 /** Gets pools from nodes, and queries for balances if needed. */
 async function getPoolsFromNode(): Promise<PoolRaw[]> {
   const nodePools = await queryPools();
@@ -343,7 +367,9 @@ async function getPoolsFromNode(): Promise<PoolRaw[]> {
     if (
       responsePool["@type"] === "/osmosis.cosmwasmpool.v1beta1.CosmWasmPool"
     ) {
-      const { balances } = await queryBalances(responsePool.contract_address);
+      const { balances } = await queryCwPoolBalances(
+        responsePool.contract_address
+      );
 
       return {
         ...responsePool,
